@@ -1,0 +1,257 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ
+END
+circ_plot.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_plot.m
+END
+circ_mean.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_mean.m
+END
+readme.txt
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/readme.txt
+END
+circ_kurtosis.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_kurtosis.m
+END
+circ_vmpar.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_vmpar.m
+END
+circ_confmean.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_confmean.m
+END
+circ_var.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_var.m
+END
+circ_kappa.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_kappa.m
+END
+circ_wwtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_wwtest.m
+END
+circ_median.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_median.m
+END
+circ_stats.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_stats.m
+END
+circ_samplecdf.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_samplecdf.m
+END
+circ_axial.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_axial.m
+END
+circ_r.m
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_r.m
+END
+circ_hktest.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_hktest.m
+END
+circ_medtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_medtest.m
+END
+license.txt
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/license.txt
+END
+circ_dist2_abs.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_dist2_abs.m
+END
+circ_corrcc.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_corrcc.m
+END
+circ_vmpdf.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_vmpdf.m
+END
+circ_rad2ang.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_rad2ang.m
+END
+circ_ang2rad.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_ang2rad.m
+END
+circ_raotest.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_raotest.m
+END
+circ_corrcl.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_corrcl.m
+END
+circ_dist2.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_dist2.m
+END
+circ_vmrnd.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_vmrnd.m
+END
+circ_std.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_std.m
+END
+circ_clust.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_clust.m
+END
+circ_ktest.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_ktest.m
+END
+circ_mtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_mtest.m
+END
+kuipertable.mat
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/kuipertable.mat
+END
+Contents.m
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/Contents.m
+END
+circ_otest.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_otest.m
+END
+circ_axialmean.m
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_axialmean.m
+END
+circ_moment.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_moment.m
+END
+circ_cmtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_cmtest.m
+END
+circ_kuipertest.m
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_kuipertest.m
+END
+circ_rtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4556/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_rtest.m
+END
+circ_skewness.m
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_skewness.m
+END
+circ_dist.m
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_dist.m
+END
+circ_vtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_vtest.m
+END
+circ_symtest.m
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/!svn/ver/4557/wchapman/CMBHOME_stable/+CMBHOME/+Utils/+circ/circ_symtest.m
+END
