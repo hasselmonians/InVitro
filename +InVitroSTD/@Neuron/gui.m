@@ -1,0 +1,61 @@
+function [] = gui(d, figureNum, i)
+
+    if nargin < 3, i=1; end
+    if nargin == 1, figureNum=1; end
+    di = d.Recording(i);
+
+    % Create the figure, bring up the useful toolbar, and make f bigger
+    % The control panel is to get the listbox to move correctly if I resize the
+    % window manually
+    f = figure(figureNum);
+    set(gcf, 'toolbar', 'figure')
+    set(gcf,'Position',[1000 918 760 420]);
+    control_panel = uipanel('Position', [3/4 0 1/4 1]);
+
+    listbox1 = uicontrol('Parent', control_panel,...
+        'Style', 'listbox',...
+        'Position', [10 60 60 225],...
+        'FontSize', 14,...
+        'String', 1:size(di.V, 2),...
+        'Max', 100,...
+        'Callback', @listbox1_Callback);
+    function listbox1_Callback(hObject, eventdata, handles)
+        index_selected = get(hObject,'Value');
+        ax(1) = subplot('Position', [.05 0.25 0.65 0.72]);
+        hold off
+        plot(di.ts{index_selected}, di.V{index_selected});
+        ax(2) = subplot('Position', [.05 0.05 0.65 0.15]);
+        hold off
+        plot(di.ts{index_selected}, di.I{index_selected});
+    end
+
+    listbox2 = uicontrol('Parent', control_panel,...
+        'Style', 'listbox',...
+        'Position', [100 60 60 225],...
+        'FontSize', 14,...
+        'String', 1:length(d.Recording),...
+        'Max', 1,...
+        'Value', i,...
+        'Callback', @listbox2_Callback);
+    function listbox2_Callback(hObject, eventdata, handles)
+        index_selected = get(hObject,'Value');
+        gui(d, figureNum, min(index_selected));
+    end
+
+    % Create the two subplots for traces and spikes
+    hold off
+    for j = 1:length(d.Recording(i).ts)
+        ax(1) = subplot('Position', [.05 0.25 0.65 0.72]);
+        hold on
+        plot(d.Recording(i).ts{j}, d.Recording(i).V{j})
+        ax(2) = subplot('Position', [.05 0.05 0.65 0.15]);
+        hold on
+        plot(d.Recording(i).ts{j}, d.Recording(i).V{j})
+    end
+    % linkaxes makes it so if I zoom in one plot, both sets of axes change
+    linkaxes(ax, 'x');
+
+end
+
+
+
