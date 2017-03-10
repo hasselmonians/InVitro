@@ -5,7 +5,7 @@ classdef Recording < handle
         db
     end
     
-    properties (SetAccess=private)
+    properties %(SetAccess=private)
         fname
         V
         I

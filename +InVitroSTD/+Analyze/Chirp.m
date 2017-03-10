@@ -46,6 +46,6 @@ if ifPlot==1
     hold on
     plot(faxis,Y,'r','LineWidth',2)
     xlabel('Frequency (Hz)')
-    ylabel('Impedence')
+    ylabel('Impedence (G\Omega)')
     title(['Q=' num2str(Q)])
 end
