@@ -4,8 +4,8 @@ function V2 = removeSpikes(self,varargin)
 %argument for estimated spike threshold.
 %
 %Bill Chapman, Craig Kelley 10/13/16
-    if ~isempty(varargin) && length(varargin) > 1
-        if ~isnan(varargin{2})
+    if ~isempty(varargin)
+        if length(varargin) > 1
             inds = findSpikes(self,varargin{1},varargin{2});
         else
             inds = findSpikes(self,varargin{1});

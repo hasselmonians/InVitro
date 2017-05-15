@@ -55,27 +55,93 @@ end
 %% For each sweep that has spikes, make sure we've caught them all 
 if ~all(cellfun(@isempty,spkInds))
     for i = 1:length(spkInds)
-        if length(spkInds{i}) > 2
+        if ~isempty(spkInds{i})
             
             %Find spike threshold based off Tahvildari et al 2012
             V = self.V{i};
             dVdt = diff(V./1000)*Fs;
-            Vm = self.V{i}(find(dVdt > 15));
-            Vavg = mean(self.V{i}(on:off));
-            Vm(Vm < Vavg) = [];
             
-            if ~isempty(varargin) && length(varargin) > 1
-                if ~isnan(varargin{2})
-                    thresh = mean(Vm) + varargin{2};
-                else
-                    thresh = mean(Vm);
+            %Derivative greater than 20, +1; less than 20, -1; nan, otherwise
+            dV = nan(1,length(dVdt));
+            for j = on:length(dV)
+                if dVdt(j) > 10
+                    dV(j) = 1;
+                elseif dVdt(j) < -5
+                    dV(j) = -1;
                 end
-            else
-                thresh = mean(Vm);
-            end 
+            end
+
+
+            %Clean up the clutter
+            countPos = 0;
+            countPosInter = 0;
+            countNeg = 0;
+            countNegInter = 0;
+
+            for j = 1:length(dV)
+                if dV(j) == -1 && countPos == 0
+                    dV(j) = nan;
+                elseif dV(j) == 1
+                    countPosInter = j+1;
+                    while countPosInter < length(dV) && dV(countPosInter) ~= -1
+                        dV(countPosInter) = nan;
+                        countPosInter = countPosInter + 1;
+                    end
+                    countPos = countPos + 1;
+                elseif dV(j) == -1
+                    countNegInter = j+1;
+                    while countNegInter < length(dV) && dV(countNegInter) ~= 1;
+                        dV(countNegInter) = nan;
+                        countNegInter = countNegInter + 1;
+                    end
+                end
+            end
+
+            %Find the spikes
+            count = 1;
+            for j = 1:length(dV)
+                if dV(j) == 1
+                    fin = find(dV(j:end) == -1, 1, 'first');
+                    fin = fin + j + 1;
+                    [spkHeight_temp(count), spkInd_temp(count)] = max(V(j:fin));
+                    spkInd_temp(count) = spkInd_temp(count) + j - 1;
+                    heightDif(count) = spkHeight_temp(count) - V(j);
+                    count = count + 1;
+                end
+            end
+
+            %Clear out  bad spikes
+%             ind = find(spkHeight_temp < mean(spkHeight_temp) - 5*std(spkHeight_temp));
+%             ind = find(heightDif < mean(heightDif) - 5*std(heightDif));
+            ind = find(heightDif < 4);
+            if ~isempty(ind)
+                spkHeight_temp(ind) = [];
+                spkInd_temp(ind) = [];
+            end
             
-            [spkHeight{i}, spkInds{i}] = findpeaks(self.V{i}(on:end),'MINPEAKHEIGHT',thresh);
-            spkInds{i} = spkInds{i} + on -1;
+            spkInds{i} = spkInd_temp;
+            spkHeight{i} = spkHeight_temp;
+            
+            clear spkInd_temp spkHeight_temp heightDif;
+
+           
+            %%%%Trying something else%%%%
+%             Vm = self.V{i}(find(dVdt > 15));
+%             Vavg = mean(self.V{i}(on:off));
+%             Vm(Vm < Vavg) = [];
+%             
+%             if ~isempty(varargin) && length(varargin) > 1
+%                 if ~isnan(varargin{2})
+%                     thresh = mean(Vm) + varargin{2};
+%                 else
+%                     thresh = mean(Vm);
+%                 end
+%             else
+%                 thresh = mean(Vm);
+%             end 
+%             
+%             [spkHeight{i}, spkInds{i}] = findpeaks(self.V{i}(on:end),'MINPEAKHEIGHT',thresh);
+%             spkInds{i} = spkInds{i} + on -1;
             
             
 %             %Clean up using spike heights

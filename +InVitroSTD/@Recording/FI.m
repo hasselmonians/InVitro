@@ -9,8 +9,8 @@ function [current, freq] = FI(self,varargin)
 %Craig Kelley 10/13/16
 
 %% Find spikes in each sweep
-if ~isempty(varargin) && length(varargin) > 1
-    if ~isnan(varargin{2})
+if ~isempty(varargin)
+    if length(varargin) > 1
         [timeInd, ~] = findSpikes(self, varargin{1}, varargin{2});
     else
         [timeInd, ~] = findSpikes(self, varargin{1});

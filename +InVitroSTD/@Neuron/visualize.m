@@ -171,13 +171,13 @@ textBox = uicontrol('Visible', 'on', ...
     'String', 'Spike Threshold Estimate', ...
     'FontSize', 14);
 
-%Text box 2
-textBox2 = uicontrol('Visible', 'on', ...
-    'Style', 'text', ...
-    'units', 'normalized', ...
-    'Position', [.86, .83, .1, .15], ...
-    'String', ' Adjust Spike Threshold', ...
-    'FontSize', 14);
+% %Text box 2
+% textBox2 = uicontrol('Visible', 'on', ...
+%     'Style', 'text', ...
+%     'units', 'normalized', ...
+%     'Position', [.86, .83, .1, .15], ...
+%     'String', ' Adjust Spike Threshold', ...
+%     'FontSize', 14);
 
 %Box for spike threshhold estimate
 editBox = uicontrol('Visible', 'on', ...
@@ -188,14 +188,14 @@ editBox = uicontrol('Visible', 'on', ...
     'tooltipstring', ...
     sprintf('If spike height is less than 0mV enter\nbest estimate for threshold in mV'));
 
-%Box for spike threshold adjuster
-editBox2 = uicontrol('Visible', 'on', ...
-    'Style', 'edit', ...
-    'FontSize', 16, ...
-    'units', 'normalized', ...
-    'Position', [.865, .85, .088, .07], ...
-    'tooltipstring', ...
-    sprintf('If necessary (e.g. "Find Spikes" misses\nsome spikes or includes "bad" spikes)\nenter a value (+/-) in mV to shift the spike threshold'));
+% %Box for spike threshold adjuster
+% editBox2 = uicontrol('Visible', 'on', ...
+%     'Style', 'edit', ...
+%     'FontSize', 16, ...
+%     'units', 'normalized', ...
+%     'Position', [.865, .85, .088, .07], ...
+%     'tooltipstring', ...
+%     sprintf('If necessary (e.g. "Find Spikes" misses\nsome spikes or includes "bad" spikes)\nenter a value (+/-) in mV to shift the spike threshold'));
     
 
 %% Initial plotting for given file
@@ -242,13 +242,18 @@ end
 
     function pushButton0_Callback(hObject, eventdata, handles)
         %find and plot spikes in current sweep; 1st sweep default
-        if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))) ...
-               && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%         if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))) %...
+%                && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%             [timeInd, height] = findSpikes(di);
+%         elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
+%             [timeInd, height] = findSpikes(di, 0, str2double(get(editBox2,'String')));
+%         else
+%             [timeInd, height] = findSpikes(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+%         end
+        if isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
             [timeInd, height] = findSpikes(di);
-        elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
-            [timeInd, height] = findSpikes(di, 0, str2double(get(editBox2,'String')));
         else
-            [timeInd, height] = findSpikes(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+            [timeInd, height] = findSpikes(di, str2double(get(editBox,'String')));
         end
         
         if ~all(cellfun(@isempty,timeInd))
@@ -261,13 +266,18 @@ end
 
     function pushButton1_Callback(hObject, eventdata, handles)
         %remove spikes from currently plotted sweep; 1st sweep default
-        if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))) ...
-                && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%         if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))) ...
+%                 && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%             V2 = removeSpikes(di);
+%         elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
+%             V2 = removeSpikes(di, 0, str2double(get(editBox2, 'String')));
+%         else
+%             V2 = removeSpikes(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+%         end
+        if isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))
             V2 = removeSpikes(di);
-        elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
-            V2 = removeSpikes(di, 0, str2double(get(editBox2, 'String')));
         else
-            V2 = removeSpikes(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+            V2 = removeSpikes(di, str2double(get(editBox, 'String')));
         end
         
         ax(1) = subplot('Position', [.05 0.25 0.65 0.72]);
@@ -282,13 +292,18 @@ end
 
     function pushButton2_Callback(hObject, eventdata, handles)
         %plot spike adaptation for current sweep; 1st sweep default
-        if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))) ...
-                && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%         if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))) ...
+%                 && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%             [out, freq] = spikeAdaptation(di);
+%         elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
+%             [out, freq] = spikeAdaptation(di, 0, str2double(get(editBox2,'String')));
+%         else
+%             [out, freq] = spikeAdaptation(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+%         end
+        if isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
             [out, freq] = spikeAdaptation(di);
-        elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
-            [out, freq] = spikeAdaptation(di, 0, str2double(get(editBox2,'String')));
         else
-            [out, freq] = spikeAdaptation(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+            [out, freq] = spikeAdaptation(di, str2double(get(editBox,'String')));
         end
         
         if ~isempty(freq{index_selected})
@@ -323,8 +338,7 @@ end
             s = sprintf('F = %.2f Hz; Q = %.2f', round(faxis(time(1)),2), pk(1) / Y(1));
             legend(s);
         else
-            legend('No Resonance Frequency Found');
-            
+            legend('No Resonance Frequency Found');           
         end
         title('Impedance')
         xlabel('Frequency (Hz)')
@@ -357,15 +371,20 @@ end
 
     function pushButton5_Callback(hObject, eventdata, handles)
         %Calculate and plot FI curve
-        if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))) ...
-                && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%         if (isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox, 'String')))) ...
+%                 && (isnan(str2double(get(editBox2,'String'))) || isempty(str2double(get(editBox2,'String'))))
+%             [current, freq] = FI(di);
+%         elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
+%             [current, freq] = FI(di, 0, str2double(get(editBox2, 'String')));
+%         else
+%             [current, freq] = FI(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+%         end
+        if isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
             [current, freq] = FI(di);
-        elseif isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
-            [current, freq] = FI(di, 0, str2double(get(editBox2, 'String')));
         else
-            [current, freq] = FI(di, str2double(get(editBox,'String')), str2double(get(editBox2,'String')));
+            [current, freq] = FI(di,str2double(get(editBox,'String')));
         end
-
+        
         figure()
         plot(current, freq, 'b*-')
         xlabel('Current (pA)')
@@ -405,12 +424,17 @@ end
 
     function pushButton8_Callback(hObject, eventdata, handles)
         %Try calculating AHP/ADP        
+%         if isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
+%             out = AHP(di);
+%         else
+%             out = AHP(di, str2double(get(editBox,'String')));
+%         end
         if isnan(str2double(get(editBox,'String'))) || isempty(str2double(get(editBox,'String')))
             out = AHP(di);
         else
             out = AHP(di, str2double(get(editBox,'String')));
         end
-        
+                
         %If there are any, plot
         if sum(~isnan(out))
             [current, ~, ~, ~, ~] = IVcurve(di);

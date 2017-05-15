@@ -20,8 +20,8 @@ function [out, freq] = spikeAdaptation(di,varargin)
 %Craig Kelley 10/12/16
 
 %% Find Spikes and initialize output variables
-if ~isempty(varargin) &&  length(varargin) > 1
-    if ~isnan(varargin{2})
+if ~isempty(varargin)  
+    if length(varargin) > 1
         [timeInd, ~] = findSpikes(di,varargin{1},varargin{2});
     else
         [timeInd, ~] = findSpikes(di, varargin{1});
