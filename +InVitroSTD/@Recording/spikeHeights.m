@@ -41,7 +41,7 @@ if ~all(vec)
     ind = 1;
     for i = 1:length(timeInd)
         if ~vec(i)
-            self.I{i} = self.I{i} - mean(self.I{i}(1000));
+            self.I{i} = self.I{i} - mean(self.I{i}(1:1000));
             current(ind) = mean(self.I{i}(on:off));
             heights(ind) = nanmean(spkHeights{i} - mean(self.V{i}(1:1000)));
             ind = ind + 1;

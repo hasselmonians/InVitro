@@ -103,28 +103,34 @@ if ~all(cellfun(@isempty,spkInds))
                 if dV(j) == 1
                     fin = find(dV(j:end) == -1, 1, 'first');
                     fin = fin + j + 1;
-                    [spkHeight_temp(count), spkInd_temp(count)] = max(V(j:fin));
-                    spkInd_temp(count) = spkInd_temp(count) + j - 1;
-                    heightDif(count) = spkHeight_temp(count) - V(j);
-                    count = count + 1;
+                    if ~isempty(fin)
+                        [spkHeight_temp(count), spkInd_temp(count)] = max(V(j:fin));
+                        spkInd_temp(count) = spkInd_temp(count) + j - 1;
+                        heightDif(count) = spkHeight_temp(count) - V(j);
+                        count = count + 1;
+                    end
                 end
             end
 
             %Clear out  bad spikes
 %             ind = find(spkHeight_temp < mean(spkHeight_temp) - 5*std(spkHeight_temp));
 %             ind = find(heightDif < mean(heightDif) - 5*std(heightDif));
-            ind = find(heightDif < 4);
-            if ~isempty(ind)
-                spkHeight_temp(ind) = [];
-                spkInd_temp(ind) = [];
+            if exist('heightDif','var')
+                ind = find(heightDif < 4);
+                if ~isempty(ind)
+                    spkHeight_temp(ind) = [];
+                    spkInd_temp(ind) = [];
+                end
+                
+                spkInds{i} = spkInd_temp;
+                spkHeight{i} = spkHeight_temp;
+                
+                clear spkInd_temp spkHeight_temp heightDif;
+            else
+                spkInds{i} = [];
+                spkHeight{i} = [];
             end
             
-            spkInds{i} = spkInd_temp;
-            spkHeight{i} = spkHeight_temp;
-            
-            clear spkInd_temp spkHeight_temp heightDif;
-
-           
             %%%%Trying something else%%%%
 %             Vm = self.V{i}(find(dVdt > 15));
 %             Vavg = mean(self.V{i}(on:off));
