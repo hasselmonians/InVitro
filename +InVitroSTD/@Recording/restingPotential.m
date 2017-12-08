@@ -9,7 +9,7 @@ Fs = 1 / (self.ts{1}(2) - self.ts{1}(1));
 if length(self.V) == 1
     if length(self.V{1}) <= 6*Fs*60
         time = 1:5;
-        avg = [mean(self.V{1}(1:Fs*60)), mean(self.V{1}(60*Fs+1:2*Fs*60)), mean(self.V{1}(2*Fs*60+1:3*Fs*60)), mean(self.V{1}(3*Fs*60+1:4*Fs*60)), mean(self.V{1}(4*Fs*60+1:5*Fs*60))];
+        avg = [mean(self.V{1}(1:Fs*60)), mean(self.V{1}(60*Fs+1:2*Fs*60)), mean(self.V{1}(2*Fs*60+1:3*Fs*60)), mean(self.V{1}(3*Fs*60+1:4*Fs*60))]%, mean(self.V{1}(4*Fs*60+1:5*Fs*60))];
     else
         time = 1:10;
         avg = [mean(self.V{1}(1:Fs*60)), mean(self.V{1}(60*Fs+1:2*Fs*60)), mean(self.V{1}(2*Fs*60+1:3*Fs*60)), mean(self.V{1}(3*Fs*60+1:4*Fs*60)), mean(self.V{1}(4*Fs*60+1:5*Fs*60)), mean(self.V{1}(5*Fs*60+1:6*Fs*60)), mean(self.V{1}(6*Fs*60+1:7*Fs*60)), mean(self.V{1}(7*Fs*60+1:8*Fs*60)), mean(self.V{1}(8*Fs*60+1:9*Fs*60)), mean(self.V{1}(9*Fs*60+1:end))];

@@ -21,6 +21,7 @@ x = self.I{1}; %local current
 nx = x - nanmean(x(1:1000));
 depol = nanmean(nx(abs(nx)>2));
 Fs = 1 / (self.ts{1}(2) - self.ts{1}(1));
+deltaV = [];
 
 on = find(nx<=depol,1,'first');
 off = find(nx<=depol,1,'last');
@@ -116,6 +117,9 @@ if ~all(cellfun(@isempty,spkInds))
 %             ind = find(spkHeight_temp < mean(spkHeight_temp) - 5*std(spkHeight_temp));
 %             ind = find(heightDif < mean(heightDif) - 5*std(heightDif));
             if exist('heightDif','var')
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                %                   Changed from < 4 -> < 20  -> < 10      %
+                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                 ind = find(heightDif < 4);
                 if ~isempty(ind)
                     spkHeight_temp(ind) = [];

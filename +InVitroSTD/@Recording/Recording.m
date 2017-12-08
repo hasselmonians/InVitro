@@ -10,6 +10,7 @@ classdef Recording < handle
         V
         I
         ts
+        recTime
     end
     
     properties (Hidden, SetAccess=private)
@@ -43,7 +44,7 @@ classdef Recording < handle
         %% Reload from Database:
         function self = reload(self)
             
-            [~, si] = InVitroSTD.Utils.abfload(self.fname);
+            [~, si, h] = InVitroSTD.Utils.abfload(self.fname);
             si = si/1E6;
             
             d = self.db.get;
@@ -51,11 +52,13 @@ classdef Recording < handle
                 self.V{1} = d(:,1);
                 self.I{1} = d(:,2);
                 self.ts{1} = si*(cumsum(ones(size(self.V{1})))-1);
+                self.recTime = h.recTime;
             else % Multiple sweeps
                 for i = 1:size(d,3)
                     self.V{i} = squeeze(d(:,1,i));
                     self.I{i} = squeeze(d(:,2,i));
                     self.ts{i} = si*(cumsum(ones(size(self.V{1})))-1);
+                    self.recTime = h.recTime;
                 end
             end
             

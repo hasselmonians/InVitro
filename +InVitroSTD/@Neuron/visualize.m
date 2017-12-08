@@ -26,7 +26,7 @@ di = d.Recording(ind);
 f = figure(figNum);
 set(gcf, 'toolbar', 'figure')
 %set(gcf,'Position',[450 400 1400 900]);
-set(gcf, 'units', 'normalized', 'Position', [0,0,1,1]);
+% set(gcf, 'units', 'normalized', 'Position', [0,0,1,1]);
 control_panel = uipanel('Position', [3/4 0 1/4 1]);
 
 Fs = 1 / (di.ts{1}(2) - di.ts{1}(1));

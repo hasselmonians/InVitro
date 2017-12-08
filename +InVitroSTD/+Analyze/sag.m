@@ -26,6 +26,7 @@ for i = 1:length(entry.V)
             
             
     if depol < 0
+%     if 1
 
         % ---------- sag ratio ---------- %
         vinitial = nanmean(y(1:100));
@@ -33,13 +34,15 @@ for i = 1:length(entry.V)
         vssHyper = nanmean(y(off-100:off));
         
         baseline = nanmean(y(on-300:on-100));
-        current(i) = vssHyper - baseline;
+        current(i,1) = vssHyper - baseline;
 
-        vsave(i) = vssHyper;
+        vsave(i,1) = vssHyper;
 
-        sagRatio(i) = vpeakHyper / vssHyper ; %<-- roth 2009
+        sagRatio(i,1) = vpeakHyper / vssHyper ; %<-- roth 2009
 
-        strength(i) = vpeakHyper - vssHyper;
+        otherRatio(i,1) = (vpeakHyper - vssHyper) / (vpeakHyper - vinitial);
+
+        strength(i,1) = vpeakHyper - vssHyper;
 
         % --- tao_sag --- %
         % Formula from Giocomo 2013
@@ -133,8 +136,10 @@ for i = 1:length(entry.V)
             numSampleDelay{i} = NaN;
         end
     end
+%     current
+%     otherRatio
 end
 %      1    2       3           4               5           6             7     8          9         10   
-res = [I(:) F(:) depolTime(:) sagRatio(:) numRebound(:) reboundDelay(:) tao(:) tao2(:) strength(:) vsave(:) current(:)];
+res = [I(:) F(:) depolTime(:) sagRatio(:) numRebound(:) reboundDelay(:) tao(:) tao2(:) strength(:) vsave(:) current(:) otherRatio(:)];
 
 end
