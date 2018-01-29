@@ -22,14 +22,16 @@ classdef Neuron
                 baseDir = uigetdir(pwd,'Select Folder Containg ABF Files for the cell');
                 abfs = dir(fullfile(baseDir,'*.abf'));
             else
-                p = inputParser;
-                p.addParamValue('baseDir',[])
-                p.addParamValue('abfs', [])
-                
-                p.parse(varargin{:});
-                
-                baseDir = p.Results.baseDir; 
-                abfs = p.Results.abfs;
+%                 p = inputParser;
+%                 p.addParamValue('baseDir',[])
+%                 p.addParamValue('abfs', [])
+%                 
+%                 p.parse(varargin{:});
+%                 
+%                 baseDir = p.Results.baseDir; 
+%                 abfs = p.Results.abfs;
+                baseDir = varargin{1};
+                abfs = varargin{2};
                 
                 if isempty(abfs)
                    abfs = dir(fullfile(baseDir,'*.abf'));

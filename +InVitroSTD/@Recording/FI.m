@@ -65,4 +65,10 @@ else
     current = NaN;
 end
 
+if current(1) > 0
+     added = 0:(current(2) - current(1)):current(1);
+     current = [added, current];
+     freq = [zeros(1,length(added)), freq];
 end
+
+    end
