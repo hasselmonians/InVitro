@@ -1,10 +1,15 @@
-function firingRateHist(self, windowWidth, nOverlap, thresh)
+function firingRateHist(self, windowWidth, nOverlap, thresh, negThresh)
 
 %% Initialize variables
 %thresh refers to threshold of the derivative for spike detection.
-%Probably won't need to be adjusted
 if ~exist('thresh','var') || isempty(thresh)
     thresh = 20;
+end
+
+%negThresh refers to the negative threshold of the derivative.  Interplay
+%between thresh and negThresh is a bit tricky . . . 
+if ~exist('negThresh','var') || isempty(negThresh)
+    negThresh = -5;
 end
 
 %windowWidth refers to the size of the window (in seconds) used to calculate firing rate
@@ -30,7 +35,7 @@ dV = nan(1,length(dVdt));
 for j = 1:length(dV)
     if dVdt(j) > thresh
         dV(j) = 1;
-    elseif dVdt(j) < -5
+    elseif dVdt(j) < negThresh
         dV(j) = -1;
     end
 end
@@ -76,6 +81,9 @@ for j = 1:length(dV)
 end
 
 %% Generate bar graph of for spike frequency vs time
+delInds = find(spkHeight_temp < -30);
+spkInd_temp(delInds) = [];
+spkHeight_temp(delInds) = [];
 oneHot = zeros(1,length(self.ts{1}));
 oneHot(spkInd_temp) = 1;
 
@@ -90,6 +98,11 @@ while ending <= length(self.ts{1})
     start = start + round(windowWidth * Fs) + 1 - round(nOverlap * Fs);
     ending = start + round(windowWidth * Fs);
 end
+
+figure()
+plot(self.ts{1}, self.V{1})
+hold on
+plot(self.ts{1}(spkInd_temp), spkHeight_temp, 'r*')
 
 figure()
 bar(time, FR)
