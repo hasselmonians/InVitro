@@ -80,7 +80,7 @@ for i = 1:length(timeInd)
         out(i).time = out(i).time - di.ts{i}(on);
         
         %exponential fit
-        out(i).s = exp2fit(out(i).time, freq{i}, 1);
+        out(i).s = InVitroSTD.Utils.exp2fit(out(i).time, freq{i}, 1);
         out(i).fitted = out(i).s(1) + out(i).s(2) * exp(-out(i).time / out(i).s(3));
         
         %determine intensity of current injection
